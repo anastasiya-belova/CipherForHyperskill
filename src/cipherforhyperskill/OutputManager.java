@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package cipherforhyperskill;
 
 import java.io.File;
@@ -10,8 +5,9 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 /**
- *
- * @author Kraz
+ * Prints the string to the console or writes it to a file, 
+ * depending on the received parameter.
+ * @author Anastasiya-Belova
  */
 public class OutputManager {
     
@@ -21,13 +17,21 @@ public class OutputManager {
         this.output = output;
     }
     
-    public void go(String outPath) throws IOException{ //to do: clarify the exception
-        if (outPath == null){ System.out.println(output); }
+    public void go(String outPath) throws IOException{
+        if (outPath == null){ System.out.println("Output string: " + output); }
         else {
             File f = new File(outPath);
-            if (!f.isFile()){ f.createNewFile(); }
-            try (FileWriter wr = new FileWriter(f)){ wr.write(output); }
-            catch(RuntimeException e){ System.out.println("Error: " + e.getMessage()); } //to do: clarify the exception
+            if (!f.isFile()){
+                f.createNewFile();
+            }
+            try (FileWriter wr = new FileWriter(f)){
+                wr.write(output);
+                System.out.println("Output string: " + output + 
+                        " Was written to a file " + f.getAbsolutePath());
+            }
+            catch(RuntimeException e){
+                System.out.println("Unchecked exception: " + e.getMessage());
+            }
         }
     }
 }

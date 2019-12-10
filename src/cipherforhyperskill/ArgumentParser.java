@@ -1,19 +1,13 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package cipherforhyperskill;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.util.Scanner;
 
 /**
- *
- * @author Kraz
+ * Searches for keywords denoting program startup parametres in an array of strings.
+ * Writes the values of these parametres to the appropriate fields.
+ * @author Anastasiya-Belova
  */
 public class ArgumentParser {
     
@@ -53,20 +47,33 @@ public class ArgumentParser {
                 try{ 
                     data = readFromFile(inPath); 
                 }
-                catch(IOException e){ //to do: clarify the exception
-                    System.out.println("Error: " + e.getMessage()); 
+                catch(FileNotFoundException e){
+                    System.out.println("This file not found: " + inPath + 
+                            ". Maybe the wrong file path was entered"); 
+                }
+                catch(RuntimeException e){
+                    System.out.println("Unchecked exception: " + e.getMessage());
                 }
             }
         }
     }
     
+    /**
+     * Returns the first line from the file. If an invalid input parametr is 
+     * specified, it throws an exception.
+     * @param filePath
+     * @return the first line from the file
+     * @throws FileNotFoundException 
+     */
     public static String readFromFile(String filePath) throws FileNotFoundException{
+        //to do: add the multiline input
        File f = new File(filePath);
        try (Scanner sc = new Scanner(f)){
            return sc.nextLine();
        }
-       catch(RuntimeException e){ //to do: clarify the exception
-           System.out.println("Error: " + e.getMessage());
+       catch(RuntimeException e){
+           System.out.println("Unchecked exception: " + e.getMessage() + 
+                   ". In method \"readFromeFile\" an empty string will be returned");
            return "";
        }
     }

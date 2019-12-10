@@ -1,13 +1,10 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package cipheralgoritms;
 
 /**
- *
- * @author Kraz
+ * It is a classic Caesar cipher. Shifts each letter by the specified number according 
+ * to its order in the alphabet. Doesn't modify non-letter character.
+ * Encrypts or decrypts only English letters, in upper case and lower case.
+ * @author Anastasiya-Belova
  */
 public class ShiftCryptographer extends Cryptographer{
     
@@ -16,6 +13,9 @@ public class ShiftCryptographer extends Cryptographer{
     }
     
     @Override
+    /**
+     * Shifts each letter by the key BACK according to its order in the alphabet.
+     */
     public String decrypt(){
         char[] input = super.getInput().toCharArray();
         int key = super.getKey()%26;
@@ -35,6 +35,9 @@ public class ShiftCryptographer extends Cryptographer{
     }
     
     @Override
+    /**
+     * Shifts each letter by the key FORWARD according to its order in the alphabet.
+     */
     public String encrypt(){
         char[] input = super.getInput().toCharArray();
         int key = super.getKey()%26;

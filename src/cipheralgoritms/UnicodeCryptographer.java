@@ -1,13 +1,10 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package cipheralgoritms;
 
 /**
- *
- * @author Kraz
+ * It is a modify Caesar cipher. Shifts each letter by the specified number according 
+ * to its order in the UNICODE table. Limits of use: English letters, digits, 
+ * space, basic math symbols etc. from 32 to 126 (include) in UNICODE table.
+ * @author Anastasiya-Belova
  */
 public class UnicodeCryptographer extends Cryptographer{
     
@@ -16,6 +13,9 @@ public class UnicodeCryptographer extends Cryptographer{
     }
     
     @Override
+    /**
+     * Shifts each character by the key BACK according to its order in the table.
+     */
     public String decrypt(){
         String input = super.getInput();
         int key = super.getKey();
@@ -32,6 +32,9 @@ public class UnicodeCryptographer extends Cryptographer{
     }
     
     @Override
+    /**
+     * Shifts each character by the key FORWARD according to its order in the table.
+     */
     public String encrypt(){
         String input = super.getInput();
         int key = super.getKey();
