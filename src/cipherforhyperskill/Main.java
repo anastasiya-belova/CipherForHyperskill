@@ -1,9 +1,9 @@
 package cipherforhyperskill;
 
+import cipheralgorithms.Cryptographer;
 import cryptocreators.UnicodeCryptoCreator;
 import cryptocreators.ShiftCryptoCreator;
 import cryptocreators.CryptoCreator;
-import cipheralgoritms.*;
 import java.io.IOException;
 import java.nio.file.AccessDeniedException;
 import java.nio.file.FileAlreadyExistsException;

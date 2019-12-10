@@ -1,5 +1,5 @@
 package cryptocreators;
-import cipheralgoritms.*;
+import cipheralgorithms.Cryptographer;
 /**
  * Creates a new instance of Cryptographer and specified all necessary fields for this instance.
  * @author Anastasiya-Belova

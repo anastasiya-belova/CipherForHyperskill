@@ -1,7 +1,7 @@
 package cryptocreators;
 
-import cipheralgoritms.Cryptographer;
-import cipheralgoritms.UnicodeCryptographer;
+import cipheralgorithms.Cryptographer;
+import cipheralgorithms.UnicodeCryptographer;
 
 /**
  * 

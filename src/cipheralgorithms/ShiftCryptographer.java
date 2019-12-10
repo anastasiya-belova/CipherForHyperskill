@@ -1,4 +1,4 @@
-package cipheralgoritms;
+package cipheralgorithms;
 
 /**
  * It is a classic Caesar cipher. Shifts each letter by the specified number according 

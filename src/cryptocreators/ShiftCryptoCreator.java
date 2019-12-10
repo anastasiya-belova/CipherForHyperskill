@@ -1,7 +1,7 @@
 package cryptocreators;
 
-import cipheralgoritms.Cryptographer;
-import cipheralgoritms.ShiftCryptographer;
+import cipheralgorithms.Cryptographer;
+import cipheralgorithms.ShiftCryptographer;
 
 /**
  * 

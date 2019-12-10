@@ -1,4 +1,4 @@
-package cipheralgoritms;
+package cipheralgorithms;
 
 /**
  * Provides a common interface fo working with an entity "Cryptographer".
