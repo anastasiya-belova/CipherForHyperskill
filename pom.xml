@@ -29,7 +29,7 @@
                     <descriptorRefs>
                         <descriptorRef>jar-with-dependencies</descriptorRef>
                     </descriptorRefs>
-                    <outputDirectory>D:\Ucheba\Java</outputDirectory>
+                    <outputDirectory>D:\Ucheba\Java\CipherForHyperskill</outputDirectory>
                     <finalName>EncryptionTools</finalName>
                     <appendAssemblyId>false</appendAssemblyId>
                     <archive>

@@ -72,6 +72,7 @@ public class ArgumentParser {
        try (Scanner sc = new Scanner(f)){
            return sc.nextLine();
        }
+       //to do: log - error
        catch(RuntimeException e){
            System.out.println("Unchecked exception: " + e.getMessage() + 
                    ". In method \"readFromeFile\" an empty string will be returned");

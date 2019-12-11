@@ -77,7 +77,7 @@ public class Main {
             System.out.println("Access is denied: " + e.getMessage());
         }
         catch(RuntimeException e){
-                    System.out.println("Unchecked exception: " + e.getMessage());
+            System.out.println("Unchecked exception: " + e.getMessage());
         }
     }
 }
