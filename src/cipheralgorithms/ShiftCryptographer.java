@@ -19,19 +19,19 @@ public class ShiftCryptographer extends Cryptographer{
     public String decrypt(){
         char[] input = super.getInput().toCharArray();
         int key = super.getKey()%26;
-        String newStr = new String();
+        StringBuilder newStr = new StringBuilder();
         for (char character : input){
             if ((int)character >= 65 && (int)character <= 90){
-                newStr += (char)(90 - ((90 - (int)character) + key)%26);
+                newStr.append((char)(90 - ((90 - (int)character) + key)%26));
             }
             else if((int)character >= 97 && (int)character <= 122){
-                newStr += (char)(122 - ((122 - (int)character) + key)%26);
+                newStr.append((char)(122 - ((122 - (int)character) + key)%26));
             }
             else{
-                newStr += character;
+                newStr.append(character);
             }
         }
-        return newStr;
+        return newStr.toString();
     }
     
     @Override
@@ -41,18 +41,18 @@ public class ShiftCryptographer extends Cryptographer{
     public String encrypt(){
         char[] input = super.getInput().toCharArray();
         int key = super.getKey()%26;
-        String newStr = new String();
+        StringBuilder newStr = new StringBuilder();
         for (char character : input){
             if ((int)character >= 65 && (int)character <= 90){
-                newStr += (char)((((int)character - 65) + key)%26 + 65);
+                newStr.append((char)((((int)character - 65) + key)%26 + 65));
             }
             else if((int)character >= 97 && (int)character <= 122){
-                newStr += (char)((((int)character - 97) + key)%26 + 97);
+                newStr.append((char)((((int)character - 97) + key)%26 + 97));
             }
             else{
-                newStr += character;
+                newStr.append(character);
             }
         }
-        return newStr;
+        return newStr.toString();
     }
 }

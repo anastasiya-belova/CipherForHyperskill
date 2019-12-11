@@ -22,7 +22,7 @@ public class Main {
      */
     public static void main(String[] args) {
         
-        ArgumentParser parser = new ArgumentParser(args);
+        ArgumentParser parser = ArgumentParser.getInstance(args);
         //to do: add the Scanner for reading data if args is empty
         
         CryptoCreator creator;
@@ -54,6 +54,7 @@ public class Main {
         System.out.println("  key: " + parser.getKey());
         System.out.println("  input string: " + parser.getData());
         
+        //to do: all exceptions to log
         OutputManager out = new OutputManager(output);
         try {
             out.go(parser.getOutPath());

@@ -17,18 +17,18 @@ public class UnicodeCryptographer extends Cryptographer{
      * Shifts each character by the key BACK according to its order in the table.
      */
     public String decrypt(){
-        String input = super.getInput();
+        char[] input = super.getInput().toCharArray();
         int key = super.getKey();
-        String newStr = new String();
-        for (int i = 0; i < input.length(); i++){
-            if ((int)input.charAt(i)-key < 31){
-                newStr += (char)(127 - 32%((int)input.charAt(i)-key));
+        StringBuilder newStr = new StringBuilder();
+        for (char character : input){
+            if((int)character >= 32 && (int)character <= 126){
+                newStr.append((char)(126 - ((126 - (int)character) + key)%95));
             }
             else{
-                newStr += (char)((int)input.charAt(i)-key);
+                newStr.append(character);
             }
         }
-        return newStr;
+        return newStr.toString();
     }
     
     @Override
@@ -36,17 +36,17 @@ public class UnicodeCryptographer extends Cryptographer{
      * Shifts each character by the key FORWARD according to its order in the table.
      */
     public String encrypt(){
-        String input = super.getInput();
+        char[] input = super.getInput().toCharArray();
         int key = super.getKey();
-        String newStr = new String();
-        for (int i = 0; i < input.length(); i++){
-            if ((int)input.charAt(i)+key > 127){
-                newStr += (char)(((int)input.charAt(i)+key)%127 + 32);
+        StringBuilder newStr = new StringBuilder();
+        for (char character : input){
+            if ((int)character >= 32 && (int)character <= 126){
+                newStr.append((char)((((int)character - 32) + key)%95 + 32));
             }
             else{
-                newStr += (char)((int)input.charAt(i)+key);
+                newStr.append(character);
             }
         }
-        return newStr;
+        return newStr.toString();
     }
 }

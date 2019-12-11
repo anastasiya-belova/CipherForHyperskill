@@ -11,6 +11,7 @@ import java.util.Scanner;
  */
 public class ArgumentParser {
     
+    private static ArgumentParser instance = null;
     private final String[] args;
     private String data = "";
     private boolean encryptMode = true;
@@ -78,11 +79,21 @@ public class ArgumentParser {
        }
     }
     
-    public ArgumentParser(String[] args){
+    private ArgumentParser(String[] args){
         this.args = args;
         this.work();
     }
     
+    public static ArgumentParser getInstance(String[] args){
+        if (instance == null){ 
+            instance = new ArgumentParser(args);
+            return instance;
+        }
+        else {
+            //to do: log - error
+            return null;
+        }
+    }
     public String getData(){
         return data;
     }

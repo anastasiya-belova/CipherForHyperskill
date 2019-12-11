@@ -29,6 +29,7 @@ public class OutputManager {
                 System.out.println("Output string: " + output + 
                         " Was written to a file " + f.getAbsolutePath());
             }
+            //to do: output exception to log
             catch(RuntimeException e){
                 System.out.println("Unchecked exception: " + e.getMessage());
             }
