@@ -3,13 +3,16 @@ package cipherforhyperskill;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Searches for keywords denoting program startup parametres in an array of strings.
  * Writes the values of these parametres to the appropriate fields.
- * @author Anastasiya-Belova
+ * @author Anastasiya Belova
  */
 public class ArgumentParser {
+    static Logger logger = LoggerFactory.getLogger(ArgumentParser.class);
     
     private static ArgumentParser instance = null;
     private final String[] args;
@@ -26,16 +29,32 @@ public class ArgumentParser {
                 data = args[i+1];
             }
             if (args[i].equals("-mode")){
-                if (args[i+1].equals("dec")){ encryptMode = false; }
+                if (args[i+1].equals("dec")){ 
+                    encryptMode = false; 
+                }
+                else if (!args[i+1].equals("enc")){
+                    logger.error("You entered an invalid mode value {}. The mode will be set to encrypt.", args[i+1]);
+                }
             }
             if (args[i].equals("-key")){
-                key = Integer.parseInt(args[i+1]);
+                try{
+                    key = Integer.parseInt(args[i+1]);
+                }
+                catch(NumberFormatException e){
+                    logger.error("You entered an invalid key value {}. The key value will be set to 0.", args[i+1]);
+                }
             }
             if (args[i].equals("-out")){
                 outPath = args[i + 1];
             }
             if (args[i].equals("-alg")){
                 nameOfAlgoritm = args[i + 1];
+                switch(nameOfAlgoritm){
+                    case("shift"): break;
+                    case("unicode"): break;
+                    default: logger.error("You entered an invalid name of algoritm: \"{}\". "
+                    + "The algorithm \"shift\" will be set.", nameOfAlgoritm);
+                }
             }
         }
         
@@ -46,14 +65,10 @@ public class ArgumentParser {
             if (args[i].equals("-in") && data.length() == 0){
                 inPath = args[i+1];
                 try{ 
-                    data = readFromFile(inPath); 
-                }
-                catch(FileNotFoundException e){
-                    System.out.println("This file not found: " + inPath + 
-                            ". Maybe the wrong file path was entered"); 
+                    data = readFromFile(inPath);
                 }
                 catch(RuntimeException e){
-                    System.out.println("Unchecked exception: " + e.getMessage());
+                    logger.error("Unchecked exception: {}", e.getMessage());
                 }
             }
         }
@@ -64,18 +79,21 @@ public class ArgumentParser {
      * specified, it throws an exception.
      * @param filePath
      * @return the first line from the file
-     * @throws FileNotFoundException 
      */
-    public static String readFromFile(String filePath) throws FileNotFoundException{
+    public static String readFromFile(String filePath){
         //to do: add the multiline input
        File f = new File(filePath);
        try (Scanner sc = new Scanner(f)){
            return sc.nextLine();
        }
-       //to do: log - error
+       catch(FileNotFoundException e){
+            logger.error("This file not found: {}. Maybe the wrong file path was entered. "
+                    + "The input string will be empty.", f.getAbsolutePath());
+            return "";
+       }
        catch(RuntimeException e){
-           System.out.println("Unchecked exception: " + e.getMessage() + 
-                   ". In method \"readFromeFile\" an empty string will be returned");
+           logger.error("Unchecked exception: {}. Argument Parser"
+                   + " will return an empty input string.", e.getMessage());
            return "";
        }
     }
@@ -91,7 +109,7 @@ public class ArgumentParser {
             return instance;
         }
         else {
-            //to do: log - error
+            logger.error("An instance of this class already exists.");
             return null;
         }
     }

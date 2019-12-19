@@ -3,7 +3,7 @@ package cipheralgorithms;
 /**
  * Provides a common interface fo working with an entity "Cryptographer".
  * 
- * @author Anastasiya-Belova
+ * @author Anastasiya Belova
  */
 public abstract class Cryptographer {
     

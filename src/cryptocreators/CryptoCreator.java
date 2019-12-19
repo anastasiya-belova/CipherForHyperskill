@@ -2,7 +2,7 @@ package cryptocreators;
 import cipheralgorithms.Cryptographer;
 /**
  * Creates a new instance of Cryptographer and specified all necessary fields for this instance.
- * @author Anastasiya-Belova
+ * @author Anastasiya Belova
  */
 public abstract class CryptoCreator {
     

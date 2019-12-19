@@ -5,7 +5,7 @@ import cipheralgorithms.UnicodeCryptographer;
 
 /**
  * 
- * @author Anastasiya-Belova
+ * @author Anastasiya Belova
  */
 public class UnicodeCryptoCreator extends CryptoCreator{
     

@@ -4,7 +4,7 @@ package cipheralgorithms;
  * It is a modify Caesar cipher. Shifts each letter by the specified number according 
  * to its order in the UNICODE table. Limits of use: English letters, digits, 
  * space, basic math symbols etc. from 32 to 126 (include) in UNICODE table.
- * @author Anastasiya-Belova
+ * @author Anastasiya Belova
  */
 public class UnicodeCryptographer extends Cryptographer{
     

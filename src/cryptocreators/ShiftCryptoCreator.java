@@ -5,7 +5,7 @@ import cipheralgorithms.ShiftCryptographer;
 
 /**
  * 
- * @author Anastasiya-Belova
+ * @author Anastasiya Belova
  */
 public class ShiftCryptoCreator extends CryptoCreator{
     

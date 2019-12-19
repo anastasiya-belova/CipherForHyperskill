@@ -4,7 +4,7 @@ package cipheralgorithms;
  * It is a classic Caesar cipher. Shifts each letter by the specified number according 
  * to its order in the alphabet. Doesn't modify non-letter character.
  * Encrypts or decrypts only English letters, in upper case and lower case.
- * @author Anastasiya-Belova
+ * @author Anastasiya Belova
  */
 public class ShiftCryptographer extends Cryptographer{
     
