@@ -1,8 +1,9 @@
 package cipherforhyperskill;
 
-import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.Scanner;
+import java.io.IOException;
+import java.nio.charset.Charset;
+import org.apache.commons.io.FileUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -81,14 +82,16 @@ public class ArgumentParser {
      * @return the first line from the file
      */
     public static String readFromFile(String filePath){
-        //to do: add the multiline input
-       File f = new File(filePath);
-       try (Scanner sc = new Scanner(f)){
-           return sc.nextLine();
+       try {
+           return FileUtils.readFileToString(FileUtils.getFile(filePath), Charset.defaultCharset());
        }
        catch(FileNotFoundException e){
             logger.error("This file not found: {}. Maybe the wrong file path was entered. "
-                    + "The input string will be empty.", f.getAbsolutePath());
+                    + "The input string will be empty.", FileUtils.getFile(filePath).getAbsolutePath());
+            return "";
+       }
+       catch(IOException e){
+            logger.error(e.getMessage());
             return "";
        }
        catch(RuntimeException e){

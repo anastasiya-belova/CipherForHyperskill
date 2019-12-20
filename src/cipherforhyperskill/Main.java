@@ -1,8 +1,6 @@
 package cipherforhyperskill;
 
-import ch.qos.logback.classic.LoggerContext;
 import ch.qos.logback.classic.util.ContextInitializer;
-import ch.qos.logback.core.util.StatusPrinter;
 import cipheralgorithms.Cryptographer;
 import cryptocreators.UnicodeCryptoCreator;
 import cryptocreators.ShiftCryptoCreator;
@@ -22,10 +20,6 @@ public class Main {
      */
     public static void main(String[] args) {
         System.setProperty(ContextInitializer.CONFIG_FILE_PROPERTY, "logback.xml");
-
-        LoggerContext lc = (LoggerContext) LoggerFactory.getILoggerFactory();
-        lc.setPackagingDataEnabled(true);
-        StatusPrinter.print(lc);
 
         Logger logger = LoggerFactory.getLogger(Main.class);
         ArgumentParser parser = ArgumentParser.getInstance(args);
